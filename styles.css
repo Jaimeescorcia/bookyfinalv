@@ -1,0 +1,383 @@
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    height: 50px;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.486);
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#cerrar-sesion, #crear-nuevo-libro {
+    background-color: #155B0C;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.781);
+    margin: 10px 0;
+    padding: 15px 30px;
+    font-size: 18px;
+    display: inline-block;
+}
+
+#nuevo-libro-form-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 300px;
+    height: auto;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    z-index: 1;
+}
+
+#nuevo-libro-form-container h2{
+    margin-top: 0;
+}
+
+#nuevo-libro-form-container form {
+    width: 100%;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    padding: 20px;
+    background-image: url(img/fondobooky4.jpg);
+    background-size: cover;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    gap: 10px;
+}
+
+.book {
+    width: 80px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+}
+
+.book:hover {
+    box-shadow: 5px 5px 10px rgba(0, 128, 0, 0.5);
+}
+
+.book img {
+    max-width: 100%;
+    max-height: 50px;
+    margin-bottom: 5px;
+}
+
+.book-title {
+    font-size: 12px;
+}
+
+#crear-nuevo-libro {
+    background-color: #155B0C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.781);
+    margin-bottom: 20px; 
+    padding: 10px 20px;
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+#crear-nuevo-libro img {
+    width: 20px; 
+    height: auto;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 3px;
+}
+
+.enlaces-pie {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.enlaces-pie a {
+    color: #363636;
+    text-decoration: none;
+}
+
+a {
+    color: #007bff;
+}
+
+.action-buttons {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    display: flex;
+    gap:40px;
+}
+
+.action-button {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.edit-button {
+    background-image: url('img/editar.png');
+    background-size: contain;
+}
+
+.delete-button {
+    background-image: url('img/eliminar.png');
+    background-size: contain;
+}
+
+#edit-book-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+#edit-book-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+}
+
+#edit-book-modal-content label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#edit-book-modal-content input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#edit-book-modal-content button {
+    margin: 10px;
+    padding: 5px 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    padding: 20px;
+    position: relative;
+    width: 600px;
+    display: block;
+    translate: 100px;
+    top: -250px;
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+#client-list-container {
+  margin-top: 20px;
+}
+
+#client-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#client-table th, #client-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#client-table th {
+    background-color: #f2f2f2;
+}
+/* Estilos para el modal */
+.modal {
+  display: none; /* Ocultar el modal por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#segunda-tarjeta {
+    position: absolute;
+    right: 20px;        
+    top: 151px;        
+    width: 540px;  
+    translate: 20px;   
+}
+
+/* Estilos opcionales para diferenciar visualmente de la otra tarjeta */
+#segunda-tarjeta .card-header {
+  background-color: #1a8647; /* Ejemplo de color */
+}
+#consumo-list-container {
+    margin-top: 20px;
+  }
+  
+  #consumo-table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+  
+  #consumo-table th, #client-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+  }
+  
+  #consumo-table th {
+      background-color: #f2f2f2;
+  }
+  .item-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra opcional */
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0; /* Elimina el padding por defecto de la lista */
+
+}
+
+.item-card li {
+    padding: 5px;
+    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+    border-bottom: 1px solid #eee; /* Separador opcional entre items */
+}
+.item-card li:hover{
+    background-color: #f2f2f2;
+}
+.ver-hoja-button {
+    margin-bottom: 5px; /* Ajusta el valor según necesites */
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    border-radius: 5px;
+    
+  }
+  
+  /* O bien */
+  
+  .eliminar-cliente-button {
+      margin-top: 5px;
+      background-color: red;
+      color: white; 
+      cursor: pointer;
+      border-radius: 5px;
+      
+  }
+  .borrar-button {
+    background-color: red; /* Color de fondo rojo */
+    color: white;          /* Color de texto blanco (opcional) */
+    border: none;           /* Quitar el borde (opcional) */
+    padding: 5px 10px;      /* Agregar un poco de padding (opcional) */
+    cursor: pointer;    /* Cambiar el cursor al pasar el ratón */
+    border-radius: 5px;
+}
